@@ -592,23 +592,29 @@ img {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal {
   width: 408px;
-  height: 584px;
+  min-height: 584px;
   background-color: #fcfcfc;
   border-radius: 4px;
-  padding: 72px 24px 20px;
+  padding: 72px 24px 24px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal-close-btn {
   width: 24px;
   height: 24px;
+  padding: 0;
   background-color: #e7e9fc;
   border-radius: 50%;
   border: 1px solid #0000001a;
@@ -618,16 +624,23 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
 }
 
-.modal-close-btn:active {
+.modal-close-btn:hover,
+.modal-close-btn:focus {
   background-color: #404bbf;
+  border: none;
 }
 
-.modal-close-btn:active .modal-close {
+.modal-close-btn:hover .modal-close,
+.modal-close-btn:focus .modal-close {
   fill: #ffffff;
+}
+
+.modal-close {
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal-header {
@@ -664,17 +677,12 @@ img {
 .modal-input {
   width: 100%;
   height: 40px;
-  padding: 11px 34px;
+  padding-left: 38px;
   border-radius: 4px;
   border: 1px solid rgba(46, 47, 66, 0.4);
   outline: transparent;
   transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   background-color: inherit;
-}
-
-.modal-input:focus {
-  border-color: #4d5ae5;
-  padding-left: 38px;
 }
 
 .modal-input:focus + .modal-icon {
@@ -684,7 +692,8 @@ img {
 .modal-icon {
   position: absolute;
   left: 16px;
-  top: 11px;
+  top: 50%;
+  transform: translateY(-50%);
   transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -698,9 +707,14 @@ img {
   padding: 8px 16px;
   border-radius: 4px;
   border: 1px solid rgba(46, 47, 66, 0.4);
-  outline: none;
+  outline: transparent;
   transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   resize: none;
+  font-size: 12px;
+  line-height: 1.17;
+  letter-spacing: 0.04em;
+  color: rgba(46, 47, 66, 0.4);
+  background-color: transparent;
 }
 
 .textarea:focus {
@@ -726,15 +740,15 @@ img {
   align-items: center;
 }
 
-.modal-text a {
+.modal-text-link {
   color: #4d5ae5;
   line-height: 1.33;
   text-decoration: underline;
   margin-left: 4px;
 }
 
-.modal-text span {
-  display: flex;
+.modal-text-span {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 16px;
@@ -756,7 +770,7 @@ img {
 
 .modal-send-btn {
   display: block;
-  width: 169px;
+  min-width: 169px;
   height: 56px;
   color: #fff;
   text-align: center;
