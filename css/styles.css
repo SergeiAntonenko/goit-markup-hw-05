@@ -747,10 +747,9 @@ img {
   color: #4d5ae5;
   line-height: 1.33;
   text-decoration: underline;
-  margin-left: 4px;
 }
 
-.modal-text span {
+.modal-text-span {
   display: inline-flex;
   align-items: center;
   justify-content: center;
