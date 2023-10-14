@@ -752,7 +752,7 @@ img {
   margin-left: 4px;
 }
 
-.modal-text-span {
+.modal-text span {
   display: inline-flex;
   align-items: center;
   justify-content: center;
